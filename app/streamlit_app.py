@@ -222,14 +222,15 @@ if start:
 
     #################################################
 
-    run_secure_transfer(
-
-        alice_key=alice_key,
-
-        qber=qber,
-
-        attack=attack,
-
-        model_path=MODEL_PATH
-
-    )
+    try:
+        run_secure_transfer(
+            alice_key=alice_key,
+            qber=qber,
+            attack=attack,
+            model_path=MODEL_PATH
+        )
+    except Exception as e:
+        import traceback
+        st.exception(e)
+        st.code(traceback.format_exc())
+        st.stop()
