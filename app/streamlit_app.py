@@ -198,6 +198,10 @@ Transfer Blocked
 
     #################################################
 
+    if uploaded_model is None:
+        st.warning("Please upload an AI model to start the secure transfer.")
+        st.stop()
+
     run_secure_transfer(
 
         alice_key,
@@ -206,6 +210,6 @@ Transfer Blocked
 
         attack,
 
-        MODEL_PATH
+        MODEL_PATH = "models/demo_model.pkl"
 
     )

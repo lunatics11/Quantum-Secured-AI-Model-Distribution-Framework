@@ -24,7 +24,7 @@ storage/*
 
 # Uploaded models
 models/*
-
+!models/demo_model.pkl
 
 # Logs
 *.log
