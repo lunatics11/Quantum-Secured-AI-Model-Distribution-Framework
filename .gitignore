@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated files
+edge_device/*
+storage/*
+!storage/.gitkeep
+
+# Uploaded models
+models/*
+
+
+# Logs
+*.log
