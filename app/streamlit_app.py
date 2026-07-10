@@ -198,18 +198,27 @@ Transfer Blocked
 
     #################################################
 
-    if uploaded_model is None:
-        st.warning("Please upload an AI model to start the secure transfer.")
-        st.stop()
-
-    run_secure_transfer(
-
-        alice_key,
-
-        qber,
-
-        attack,
-
-        MODEL_PATH
-
+    uploaded_model = st.file_uploader(
+        "Upload AI Model (Optional)",
+        type=["pkl", "joblib", "pt", "pth", "onnx"]
     )
+
+    os.makedirs("models", exist_ok=True)
+
+    MODEL_PATH = "models/demo_model.pkl"
+
+    if uploaded_model is not None:
+
+        MODEL_PATH = os.path.join(
+            "models",
+            uploaded_model.name
+        )
+
+        with open(MODEL_PATH, "wb") as f:
+            f.write(uploaded_model.getbuffer())
+
+        st.success(f"Using uploaded model: {uploaded_model.name}")
+
+    else:
+
+        st.info("Using built-in demo model.")
