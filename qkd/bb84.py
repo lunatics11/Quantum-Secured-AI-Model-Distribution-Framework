@@ -1,40 +1,9 @@
 import random
-from qiskit import QuantumCircuit, transpile
-from qiskit_aer import AerSimulator
-
-
-backend = AerSimulator()
-
 
 def _measure_qubit(bit, alice_basis, bob_basis):
-    """
-    Simulate transmission of a single qubit.
-    """
-
-    qc = QuantumCircuit(1, 1)
-
-    # Alice prepares qubit
-    if bit == 1:
-        qc.x(0)
-
-    if alice_basis == 1:
-        qc.h(0)
-
-    # Bob measures
-    if bob_basis == 1:
-        qc.h(0)
-
-    qc.measure(0, 0)
-
-    compiled = transpile(qc, backend)
-
-    result = backend.run(compiled, shots=1).result()
-
-    counts = result.get_counts()
-
-    measured = int(list(counts.keys())[0])
-
-    return measured
+    if alice_basis == bob_basis:
+        return bit
+    return random.randint(0, 1)
 
 
 def run_bb84(bit_num=32):
