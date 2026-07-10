@@ -134,7 +134,10 @@ render_dashboard()
 
 if start:
 
-    result = run_bb84(32)
+    st.success("Reached before BB84")
+
+    alice_key = "10101010101010101010101010101010"
+    bob_key = alice_key
 
     alice_key = result["alice_key"]
 
