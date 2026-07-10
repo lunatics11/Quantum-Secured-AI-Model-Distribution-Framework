@@ -198,6 +198,8 @@ Transfer Blocked
 
     #################################################
 
+    #################################################
+
     os.makedirs("models", exist_ok=True)
 
     MODEL_PATH = "models/demo_model.pkl"
@@ -217,3 +219,17 @@ Transfer Blocked
     else:
 
         st.info("Using built-in demo model.")
+
+    #################################################
+
+    run_secure_transfer(
+
+        alice_key=alice_key,
+
+        qber=qber,
+
+        attack=attack,
+
+        model_path=MODEL_PATH
+
+    )
