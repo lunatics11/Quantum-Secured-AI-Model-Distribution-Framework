@@ -2,7 +2,7 @@
 > **Quantum-Secured AI Model Distribution Framework** is a cybersecurity project that demonstrates secure deployment of AI models using BB84 Quantum Key Distribution, AES-256 encryption, and SHA-256 integrity verification. The framework supports user-uploaded AI models and simulates secure end-to-end deployment from a Cloud Server to an Edge Device through an interactive Streamlit dashboard.
 ---
 
-> **Dashboard Screenshot will be added here**
+![Dashboard](docs/dashboard.png)
 
 ---
 
@@ -97,7 +97,7 @@ The application supports user-uploaded AI models and provides a real-time Stream
 Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/Quantum-Secured-AI-Model-Distribution-Framework.git
+git clone https://github.com/lunatics11/Quantum-Secured-AI-Model-Distribution-Framework.git
 
 cd Quantum-Secured-AI-Model-Distribution-Framework
 ```
