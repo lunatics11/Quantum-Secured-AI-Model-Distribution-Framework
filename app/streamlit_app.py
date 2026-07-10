@@ -210,6 +210,6 @@ Transfer Blocked
 
         attack,
 
-        MODEL_PATH = "models/demo_model.pkl"
+        MODEL_PATH
 
     )
