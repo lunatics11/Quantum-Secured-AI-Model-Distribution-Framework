@@ -92,7 +92,7 @@ with st.sidebar:
         ]
     )
 
-    MODEL_PATH = "models/model.pkl"
+    MODEL_PATH = "models/demo_model.pkl"
 
     if uploaded_model is not None:
 
@@ -180,45 +180,45 @@ if start:
 
     if detect_eve(qber):
 
+            st.error(
+
+                f"""
+
+    Attack Detected
+
+    QBER : {qber:.3f}
+
+    Transfer Blocked
+
+    """
+
+            )
+
+            st.stop()
+
+        #################################################
+
+        #################################################
+
+    #################################################
+
+    if detect_eve(qber):
+
         st.error(
 
             f"""
 
-Attack Detected
+    Attack Detected
 
-QBER : {qber:.3f}
+    QBER : {qber:.3f}
 
-Transfer Blocked
+    Transfer Blocked
 
-"""
+    """
 
         )
 
         st.stop()
-
-    #################################################
-
-    #################################################
-
-    os.makedirs("models", exist_ok=True)
-
-    MODEL_PATH = "models/demo_model.pkl"
-
-    if uploaded_model is not None:
-
-        MODEL_PATH = os.path.join(
-            "models",
-            uploaded_model.name
-        )
-
-        with open(MODEL_PATH, "wb") as f:
-            f.write(uploaded_model.getbuffer())
-
-        st.success(f"Using uploaded model: {uploaded_model.name}")
-
-    else:
-
-        st.info("Using built-in demo model.")
 
     #################################################
 
