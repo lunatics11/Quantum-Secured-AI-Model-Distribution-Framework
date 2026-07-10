@@ -198,11 +198,6 @@ Transfer Blocked
 
     #################################################
 
-    uploaded_model = st.file_uploader(
-        "Upload AI Model (Optional)",
-        type=["pkl", "joblib", "pt", "pth", "onnx"]
-    )
-
     os.makedirs("models", exist_ok=True)
 
     MODEL_PATH = "models/demo_model.pkl"
