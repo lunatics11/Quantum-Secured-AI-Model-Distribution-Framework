@@ -84,8 +84,8 @@ with st.sidebar:
 
     **Upload Your own AI Model **
 
-    **Note:** This is Demo version where can be deployed. 
-                Hence Upload models smaller than **25 MB** for faster encryption and transfer.
+    **Note:** This is Demo version which could be deployed via streamlit. 
+            Please upload models smaller than **25 MB** for faster encryption and transfer.
 
     """)
 
