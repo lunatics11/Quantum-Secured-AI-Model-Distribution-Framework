@@ -80,21 +80,31 @@ with st.sidebar:
     st.markdown("---")
 
     st.subheader("Model")
+    st.markdown("""
+
+    **Upload Your own AI Model **
+
+    **Note:** This is Demo version where can be deployed. 
+                Hence Upload models smaller than **25 MB** for faster encryption and transfer.
+
+    """)
 
     uploaded_model = st.file_uploader(
         "Upload AI Model",
-        type=[
-            "pkl",
-            "joblib",
-            "pt",
-            "pth",
-            "onnx"
-        ]
+        type=["pkl", "joblib", "pt", "pth", "onnx"]
     )
 
     MODEL_PATH = "models/demo_model.pkl"
 
+    MAX_SIZE_MB = 25
+
     if uploaded_model is not None:
+
+        file_size_mb = uploaded_model.size / (1024 * 1024)
+
+        if file_size_mb > MAX_SIZE_MB:
+            st.error(f"Model size exceeds {MAX_SIZE_MB} MB. Please upload a smaller model.")
+            st.stop()
 
         os.makedirs("models", exist_ok=True)
 
@@ -107,30 +117,22 @@ with st.sidebar:
             f.write(uploaded_model.getbuffer())
 
         st.success(uploaded_model.name)
-
-        st.caption(
-            f"{uploaded_model.size / 1024:.2f} KB"
-        )
+        st.caption(f"{file_size_mb:.2f} MB")
 
     else:
 
-        st.caption("Else, Simply start to use demo model")
+        st.caption("Else, Start with the default demo model.")
 
     st.markdown("---")
 
     start = st.button(
-
         "Start Secure Transfer",
-
         use_container_width=True
-
     )
 
-# -----------------------------------------------------
 
 render_dashboard()
 
-# -----------------------------------------------------
 
 if start:
 
@@ -140,7 +142,7 @@ if start:
 
     bob_key = result["bob_key"]
 
-    #################################################
+    
 
     if attack == "Intercept-Resend":
 
@@ -166,8 +168,6 @@ if start:
 
         )
 
-    #################################################
-
     qber = calculate_qber(
 
         alice_key,
@@ -176,7 +176,6 @@ if start:
 
     )
 
-    #################################################
 
     if detect_eve(qber):
 
@@ -196,11 +195,6 @@ if start:
 
             st.stop()
 
-        #################################################
-
-        #################################################
-
-    #################################################
 
     if detect_eve(qber):
 
@@ -219,8 +213,6 @@ if start:
         )
 
         st.stop()
-
-    #################################################
 
     try:
         run_secure_transfer(
